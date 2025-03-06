@@ -1,0 +1,140 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffcc99, #99ccff); /* Orange to blue gradient */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+h1 {
+    color: #ff5733; /* Bright orange-red */
+    font-size: 2.5em;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #555555;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Book List */
+#book-list {
+    margin-top: 20px;
+    text-align: left; /* Ensure parent container aligns left */
+}
+
+.book {
+    background: linear-gradient(90deg, #00b4db, #0083b0); /* Cyan to deep blue */
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+}
+
+/* Book Title - Explicit Left Alignment */
+.book-title {
+    color: #ffffff;
+    font-size: 1.5em;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left; /* Explicit left alignment */
+    display: block; /* Changed from flex to block for simpler alignment */
+    padding: 10px 0;
+    margin: 0; /* Remove any inherited margins */
+}
+
+.book-title .toggle-icon {
+    color: #ffeb3b; /* Bright yellow */
+    font-size: 1.2em;
+    margin-left: 10px; /* Space between title and icon */
+    display: inline; /* Keep icon inline with title */
+    transition: transform 0.3s ease;
+}
+
+.book-title .toggle-icon.active {
+    transform: rotate(45deg);
+}
+
+/* Highlights */
+.highlights {
+    list-style-type: none;
+    padding: 15px 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.highlight {
+    position: relative;
+    padding-left: 25px;
+    color: #333333;
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.highlight:before {
+    content: "•";
+    color: #ff3366; /* Bright pink-red bullet */
+    font-size: 1.5em;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Buttons and Links */
+.download-btn {
+    background: linear-gradient(90deg, #00cc66, #009933); /* Green gradient */
+    color: #ffffff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: transform 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: scale(1.05);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #9933ff; /* Purple */
+    font-size: 1.1em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover {
+    color: #6600cc;
+}

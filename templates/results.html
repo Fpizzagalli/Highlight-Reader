@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Kindle Highlights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Kindle Highlights</h1>
+        <p>Click a book title to explore its highlights.</p>
+
+        <div id="book-list">
+            {% for title, entries in highlights.items() %}
+                <div class="book">
+                    <h2 class="book-title" data-book="{{ title }}">{{ title }} <span class="toggle-icon">+</span></h2>
+                    <ul class="highlights" id="highlights-{{ title }}" style="display: none;">
+                        {% for entry in entries %}
+                            <li class="highlight">{{ entry.highlight }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+
+        <form method="POST" action="{{ url_for('download_zip') }}" id="download-form">
+            {% for title, entries in highlights.items() %}
+                <input type="hidden" name="title_{{ title }}" value="{{ title }}">
+                {% for entry in entries %}
+                    <input type="hidden" name="metadata_{{ title }}" value="{{ entry.metadata }}">
+                    <input type="hidden" name="highlight_{{ title }}" value="{{ entry.highlight }}">
+                {% endfor %}
+            {% endfor %}
+            <button type="submit" class="download-btn">Download Highlights</button>
+        </form>
+
+        <a href="{{ url_for('index') }}" class="back-link">Upload Another File</a>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

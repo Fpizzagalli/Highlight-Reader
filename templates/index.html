@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindle Highlights Organizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Kindle Highlights Organizer</h1>
+        <p>Upload your "My Clippings.txt" file to organize your Kindle highlights by book.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for message in messages %}
+                        <p class="flash">{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".txt" required>
+            <button type="submit">Upload & Organize</button>
+        </form>
+
+        <p class="instructions">
+            <strong>How to use:</strong><br>
+            1. Connect your Kindle to your computer.<br>
+            2. Copy "My Clippings.txt" from the "documents" folder.<br>
+            3. Upload it here and download a ZIP file with your organized highlights.
+        </p>
+    </div>
+</body>
+</html>
